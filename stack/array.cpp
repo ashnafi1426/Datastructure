@@ -1,6 +1,12 @@
 #include <iostream>
 using namespace std;
 
+
+//c++ mostr importamt to other
+
+
+
+
 const int MAX_SIZE = 100; // Maximum size of stack
 
 class Stack {
