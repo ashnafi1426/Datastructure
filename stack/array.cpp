@@ -1,76 +1,34 @@
 #include <iostream>
 using namespace std;
 
+const int MAX = 100;
+int stack[MAX];
+int top = -1;
 
-//c++ mostr importamt to other
-
-
-
-
-const int MAX_SIZE = 100; // Maximum size of stack
-
-class Stack {
-private:
-    int arr[MAX_SIZE];
-    int topIndex;
-
-public:
-    Stack() {
-        topIndex = -1; // Initialize stack as empty
+void push(int value) {
+    if (top >= MAX-1) {
+        cout << "Stack Overflow\n";
+        return;
     }
+    stack[++top] = value;
+}
 
-    // Push element onto stack
-    void push(int value) {
-        if (topIndex >= MAX_SIZE - 1) {
-            cout << "Stack Overflow! Cannot push " << value << endl;
-            return;
-        }
-        arr[++topIndex] = value;
+int pop() {
+    if (top < 0) {
+        cout << "Stack Underflow\n";
+        return -1;
     }
+    return stack[top--];
+}
 
-    // Remove and return top element
-    int pop() {
-        if (isEmpty()) {
-            cout << "Stack Underflow! Stack is empty." << endl;
-            return -1;
-        }
-        return arr[topIndex--];
+int peek() {
+    if (top < 0) {
+        cout << "Stack is Empty\n";
+        return -1;
     }
+    return stack[top];
+}
 
-    // Return top element without removing it
-    int peek() {
-        if (isEmpty()) {
-            cout << "Stack is empty." << endl;
-            return -1;
-        }
-        return arr[topIndex];
-    }
-
-    // Check if stack is empty
-    bool isEmpty() {
-        return topIndex == -1;
-    }
-
-    // Get current stack size
-    int size() {
-        return topIndex + 1;
-    }
-};
-
-int main() {
-    Stack s;
-    
-    s.push(10);
-    s.push(20);
-    s.push(30);
-    
-    cout << "Top element: " << s.peek() << endl;
-    cout << "Stack size: " << s.size() << endl;
-    
-    cout << "Popped: " << s.pop() << endl;
-    cout << "Popped: " << s.pop() << endl;
-    
-    cout << "Stack is empty? " << (s.isEmpty() ? "Yes" : "No") << endl;
-    
-    return 0;
+bool isEmpty() {
+    return top < 0;
 }
