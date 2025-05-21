@@ -1,13 +1,12 @@
 #include <iostream>
-using namespace std;
+#define MAX 100
 
-const int MAX = 100;
 int stack[MAX];
 int top = -1;
 
 void push(int value) {
     if (top >= MAX-1) {
-        cout << "Stack Overflow\n";
+        std::cout << "Stack Overflow\n";
         return;
     }
     stack[++top] = value;
@@ -15,20 +14,28 @@ void push(int value) {
 
 int pop() {
     if (top < 0) {
-        cout << "Stack Underflow\n";
+        std::cout << "Stack Underflow\n";
         return -1;
     }
     return stack[top--];
 }
 
-int peek() {
-    if (top < 0) {
-        cout << "Stack is Empty\n";
-        return -1;
+void displayStack() {
+    std::cout << "Stack: ";
+    for(int i = top; i >= 0; i--) {
+        std::cout << stack[i] << " ";
     }
-    return stack[top];
+    std::cout << "\n";
 }
 
-bool isEmpty() {
-    return top < 0;
+int main() {
+    push(10);
+    push(20);
+    push(30);
+    displayStack();
+    
+    std::cout << "Popped: " << pop() << "\n";
+    displayStack();
+    
+    return 0;
 }

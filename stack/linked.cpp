@@ -1,12 +1,11 @@
 #include <iostream>
-using namespace std;
 
 struct Node {
     int data;
     Node* next;
 };
 
-Node* top = NULL;
+Node* top = nullptr;
 
 void push(int value) {
     Node* newNode = new Node();
@@ -16,8 +15,8 @@ void push(int value) {
 }
 
 int pop() {
-    if (top == NULL) {
-        cout << "Stack Underflow\n";
+    if (top == nullptr) {
+        std::cout << "Stack Underflow\n";
         return -1;
     }
     Node* temp = top;
@@ -27,14 +26,24 @@ int pop() {
     return popped;
 }
 
-int peek() {
-    if (top == NULL) {
-        cout << "Stack is Empty\n";
-        return -1;
+void displayStack() {
+    Node* current = top;
+    std::cout << "Stack: ";
+    while(current != nullptr) {
+        std::cout << current->data << " ";
+        current = current->next;
     }
-    return top->data;
+    std::cout << "\n";
 }
 
-bool isEmpty() {
-    return top == NULL;
+int main() {
+    push(100);
+    push(200);
+    push(300);
+    displayStack();
+    
+    std::cout << "Popped: " << pop() << "\n";
+    displayStack();
+    
+    return 0;
 }
