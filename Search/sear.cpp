@@ -19,5 +19,4 @@ int main(){
   }else{
     cout<<"Element"<<searchElement<<" not found in the array"<<endl;
   }
-  
 }
