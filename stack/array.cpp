@@ -3,7 +3,6 @@
 
 int stack[MAX];
 int top = -1;
-
 void push(int value) {
     if (top >= MAX-1) {
         std::cout << "Stack Overflow\n";
