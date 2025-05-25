@@ -14,5 +14,9 @@ int main(){
   int size=sizeof(arr);
   int searchelement=4;
   int result=linearSearch(arr,size,searchelement)
-  if
+  if(result!==-1){
+    cout<<"element"<<searchelement<<"found at index"<<result<<endl;
+  }else{
+    cout<<"not found"<<endl;
+  }
 }
